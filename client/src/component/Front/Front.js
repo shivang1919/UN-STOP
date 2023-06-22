@@ -7,15 +7,11 @@ import {getProduct} from "../../actions/productAction"
 import {useSelector,useDispatch} from "react-redux"
 
 
-const product={
-  name:"Blue Tshirt",
-  images:[{url:"https://media.istockphoto.com/id/183870483/photo/happy-smiling-man-portrait.jpg?s=612x612&w=0&k=20&c=5GHczx8C-aVK9PlI0afP7c2PaDVaKyXs-WVN7btQYDI="}],
-  price:"3000",
-  _id:"shivang"
-}
+
 
 const Front = () => {
   const dispatch = useDispatch()
+  const {loading,error,products,productsCount} = useSelector(state=>state.products)
   useEffect(()=>{
     dispatch(getProduct())
   },[dispatch])
@@ -33,15 +29,9 @@ const Front = () => {
         </div>
         <h2 className='homeHeading'>Featured Products</h2>
         <div className='container' id="container">
-          <Product product={product} /> 
-          <Product product={product} /> 
-          <Product product={product} /> 
-          <Product product={product} /> 
-
-          <Product product={product} /> 
-          <Product product={product} /> 
-          <Product product={product} /> 
-          <Product product={product} /> 
+          {products && products.map(product=>(
+            <Product product={product} />
+          ))}
 
         </div>
     </Fragment>
