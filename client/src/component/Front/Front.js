@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import {CgMouse} from "react-icons/cg"
 import "./Front.css"
 import Product from "./Product.js"
 import MetaData from '../layout/MetaData'
+import {getProduct} from "../../actions/productAction"
+import {useSelector,useDispatch} from "react-redux"
 
 
 const product={
@@ -13,6 +15,10 @@ const product={
 }
 
 const Front = () => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getProduct())
+  },[dispatch])
   return (
     <Fragment>
       <MetaData title="UN-STOP"/>
