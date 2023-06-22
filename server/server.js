@@ -4,18 +4,9 @@ const express= require("express")
 const app = express()
 const errorMiddleware = require("./middleware/error")
 const cookieParser = require("cookie-parser")
-const helmet = require("helmet")
 app.use(express.json())
 app.use(cookieParser())
-app.use(helmet({ crossOriginEmbedderPolicy: false, originAgentCluster: true }));
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "img-src": ["'self'", "https: data: blob:"],
-    },
-  })
-);
+
 // Route imports
 app.use(cors())
 const product = require("./routes/ProductRoute")
