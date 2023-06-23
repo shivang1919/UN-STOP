@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 // Route imports
-app.use(cors())
+
 const product = require("./routes/ProductRoute")
 const user = require("./routes/userRoute")
 const order = require("./routes/orderRoute")
